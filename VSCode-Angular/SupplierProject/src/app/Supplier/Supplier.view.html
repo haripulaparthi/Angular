@@ -1,0 +1,137 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h2> {{page}}</h2>
+
+<style>
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+
+.error{
+    color: red;
+}
+</style>
+
+<div>
+    <form [formGroup]="SupplierObj.formGroup">
+  <table>
+        <tr>
+                <td>Supplier Code :- </td>
+                <td>
+                    <input 
+                        formControlName="SupplierCodeControl"
+                        [(ngModel)]="SupplierObj.SupplierCode" 
+                        type="text" />
+                    
+                    <div *ngIf="SupplierObj.
+                                formGroup.controls['SupplierCodeControl'].dirty" 
+                        class="error"  [hidden]="!(SupplierObj.
+                        formGroup.controls['SupplierCodeControl']
+                        .hasError('required')
+                        )" >Supplier Code is required.</div>
+                    
+                    <div *ngIf="SupplierObj.
+                        formGroup.controls['SupplierCodeControl'].dirty"
+                        class="error" [hidden]="!(SupplierObj.
+                        formGroup.controls['SupplierCodeControl']
+                        .hasError('pattern')
+                        )" >Supplier Code is pattern.</div>
+                </td>
+              </tr>
+    <tr>
+      <td>Supplier Name :- </td>
+      <td>
+            <input 
+                formControlName="SupplierNameControl"
+                [(ngModel)]="SupplierObj.SupplierName" 
+                type="text" /> 
+                <div
+                    *ngIf="SupplierObj.
+                    formGroup.controls['SupplierNameControl'].dirty"
+                     class="error" [hidden]="!(SupplierObj.
+                        formGroup.controls['SupplierNameControl']
+                        .hasError('required')
+                        )" >Supplier Name is required.</div>
+            </td>
+    </tr>
+    
+      <tr>
+          <td>Supplier Amount :- </td>
+          <td>
+              <input 
+                [(ngModel)]="SupplierObj.SupplierAmount" 
+                [ngModelOptions]="{standalone: true}"
+                type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input 
+                    [disabled]="!(SupplierObj.formGroup.valid)"
+                    type="button" 
+                    value="Add" 
+                    (click)=Add() />
+
+                <input 
+                    type="button" 
+                    value="Force" 
+                    (click)=ShowValidation() />
+
+                <input 
+                    type="button" 
+                    value="Toggle" 
+                    (click)=ToggleGrid() />
+
+                <input 
+                    type="button" 
+                    value="Server Post" 
+                    (click)=PostToServer() />
+            </td>
+          </tr>
+  </table>
+</form>
+</div>
+<div>
+{{SupplierObj.SupplierName}} <br>
+{{SupplierObj.SupplierCode}} <br>
+{{SupplierObj.SupplierAmount}} <br>
+</div>
+<hr>
+<h2>Supplier Details</h2>
+<div id="sgid">
+<my-grid 
+        [grid-data]="SupplierObjs" 
+        [grid-columns]="[{'colName': 'SupplierCode'},{'colName': 'SupplierName'},{'colName': 'SupplierAmount'}]" 
+        (grid-selected)="SelectSupplier($event)">
+</my-grid>
+<br>
+  <table style="border: 1px;">
+    <tr>
+      <td>
+          Code 
+      </td>
+        <td>
+           Name 
+      </td>
+      
+      <td>
+         Amount 
+      </td>
+    </tr>
+    <tr *ngFor="let supp of SupplierObjs">
+            <td>
+                    {{supp.SupplierCode}}
+                </td>
+        <td>
+            {{supp.SupplierName}}
+        </td>
+        <td>
+            {{supp.SupplierAmount}}
+        </td>
+      </tr>
+  </table>
+</div>
+
+

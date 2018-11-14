@@ -1,0 +1,40 @@
+{
+  "Suppliers": [
+    {
+      "id": 1,
+      "SupplierName": "Hari",
+      "SupplierCode": "SC1000",
+      "SupplierAmount": "10.23"
+    },
+    {
+      "id": 2,
+      "SupplierName": "Ravi",
+      "SupplierCode": "SC1001",
+      "SupplierAmount": "100.23"
+    },
+    {
+      "id": 3,
+      "SupplierName": "Raju",
+      "SupplierCode": "SC1002",
+      "SupplierAmount": "1000.23"
+    },
+    {
+      "id": "20010",
+      "SupplierCode": "S2000",
+      "SupplierName": "Ramuj",
+      "SupplierAmount": "200"
+    },
+    {
+      "id": "2010",
+      "SupplierCode": "S2001",
+      "SupplierName": "Ram",
+      "SupplierAmount": "20"
+    },
+    {
+      "id": "29110",
+      "SupplierCode": "S2003",
+      "SupplierName": "S87876",
+      "SupplierAmount": "291"
+    }
+  ]
+}
